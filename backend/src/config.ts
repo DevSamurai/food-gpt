@@ -3,5 +3,5 @@ import dotenv from "dotenv"
 dotenv.config()
 
 export default {
-  port: process.env.PORT || 3000,
+  OpenaiApiToken: process.env.OPENAI_API_KEY,
 }

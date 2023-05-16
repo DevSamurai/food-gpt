@@ -8,7 +8,7 @@ Identificação do Cliente: Felipe Fontoura, telefone 12982041640.
 
 Últimos pedidos: Muzzarella, Calabreza, Frango.
 
-O códido do pedido é: #736612
+O código do pedido é: #sk-736612
 
 O roteiro de atendimento é:
 

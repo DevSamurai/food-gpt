@@ -1,4 +1,16 @@
+import { Configuration, OpenAIApi } from "openai"
 import { Message, Whatsapp, create } from "venom-bot"
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+})
+
+const openai = new OpenAIApi(configuration)
+
+// const completion = await openai.createCompletion({
+//   model: "text-davinci-003",
+//   prompt: "Hello world",
+// })
 
 create({
   session: "session-name",
