@@ -1,0 +1,21 @@
+{
+  "name": "food-commerce-gpt",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "rimraf ./build && tsc",
+    "dev": "nodemon",
+    "start": "npm build && node build/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.1.5",
+    "nodemon": "^2.0.22",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "typecript": "^0.0.1-security"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "venom-bot": "^5.0.1"
+  }
+}
