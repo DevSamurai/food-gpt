@@ -1,0 +1,25 @@
+version: "3.1"
+services:
+  redmin:
+    image: sasanrose/phpredmin
+    environment:
+      - PHPREDMIN_DATABASE_REDIS_0_HOST=redis
+      - PHPREDMIN_AUTH_USERNAME=root
+      - PHPREDMIN_AUTH_PASSWORD=secret
+    ports:
+      - "8002:80"
+    depends_on:
+      - redis
+    links:
+      - redis
+
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:

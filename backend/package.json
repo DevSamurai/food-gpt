@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "dotenv": "^16.0.3",
+    "ioredis": "^5.3.2",
     "openai": "^3.2.1",
     "venom-bot": "^5.0.1"
   }

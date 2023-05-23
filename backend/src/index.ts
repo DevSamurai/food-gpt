@@ -1,19 +1,16 @@
-import { Configuration, OpenAIApi } from "openai"
 import { Message, Whatsapp, create } from "venom-bot"
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-})
-
-const openai = new OpenAIApi(configuration)
+// import { openai } from "./lib/openai"
 
 // const completion = await openai.createCompletion({
 //   model: "text-davinci-003",
 //   prompt: "Hello world",
 // })
 
+// +55 12 982754592
+
 create({
-  session: "session-name",
+  session: "food-gpt",
 })
   .then((client: Whatsapp) => start(client))
   .catch((err) => {
