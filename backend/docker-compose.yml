@@ -4,8 +4,6 @@ services:
     image: sasanrose/phpredmin
     environment:
       - PHPREDMIN_DATABASE_REDIS_0_HOST=redis
-      - PHPREDMIN_AUTH_USERNAME=root
-      - PHPREDMIN_AUTH_PASSWORD=secret
     ports:
       - "8002:80"
     depends_on:
