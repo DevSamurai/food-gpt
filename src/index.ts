@@ -6,9 +6,18 @@ import { redis } from "./lib/redis"
 
 import { initPrompt } from "./utils/initPrompt"
 
-import { CustomerChat } from "./interfaces/CustomerChat"
-
 // https://wa.me/+5512982754592
+interface CustomerChat {
+  status?: "open" | "closed"
+  orderCode: string
+  chatAt: string
+  customer: {
+    name: string
+    phone: string
+  }
+  messages: ChatCompletionRequestMessage[]
+  orderSummary?: string
+}
 
 async function completion(
   messages: ChatCompletionRequestMessage[]

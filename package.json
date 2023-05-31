@@ -5,7 +5,7 @@
   "scripts": {
     "build": "rimraf ./build && tsc",
     "dev": "nodemon",
-    "start": "npm build && node build/index.js"
+    "start": "node build/index.js"
   },
   "devDependencies": {
     "@types/node": "^20.1.5",
