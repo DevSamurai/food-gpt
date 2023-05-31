@@ -9,5 +9,5 @@ export interface CustomerChat {
     phone: string
   }
   messages: ChatCompletionRequestMessage[]
-  order?: string
+  orderSummary?: string
 }

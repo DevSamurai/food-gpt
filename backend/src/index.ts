@@ -8,14 +8,14 @@ import { initPrompt } from "./utils/initPrompt"
 
 import { CustomerChat } from "./interfaces/CustomerChat"
 
-// +55 12 982754592
+// https://wa.me/+5512982754592
 
 async function completion(
   messages: ChatCompletionRequestMessage[]
 ): Promise<string | undefined> {
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
-    temperature: 0.2,
+    temperature: 0,
     max_tokens: 256,
     messages,
   })
@@ -38,7 +38,9 @@ async function start(client: Whatsapp) {
   client.onMessage(async (message: Message) => {
     if (!message.body || message.isGroupMsg) return
 
-    const customerKey = `customer:${message.from}:chat`
+    const customerPhone = `+${message.from.replace("@c.us", "")}`
+    const customerName = message.author
+    const customerKey = `customer:${customerPhone}:chat`
     const orderCode = `#sk-${("00000" + Math.random()).slice(-5)}`
 
     const lastChat = JSON.parse((await redis.get(customerKey)) || "{}")
@@ -51,8 +53,8 @@ async function start(client: Whatsapp) {
             orderCode,
             chatAt: new Date().toISOString(),
             customer: {
-              name: message.author,
-              phone: message.from,
+              name: customerName,
+              phone: customerPhone,
             },
             messages: [
               {
@@ -60,9 +62,10 @@ async function start(client: Whatsapp) {
                 content: initPrompt(storeName, orderCode),
               },
             ],
+            orderSummary: "",
           }
 
-    console.debug(message.from, "user", message.body)
+    console.debug(customerPhone, "👤", message.body)
 
     customerChat.messages.push({
       role: "user",
@@ -77,24 +80,28 @@ async function start(client: Whatsapp) {
       content,
     })
 
-    console.debug(message.from, "assistant", content)
+    console.debug(customerPhone, "🤖", content)
 
     await client.sendText(message.from, content)
 
-    if (customerChat.status === "open" && content.match(orderCode)) {
+    if (
+      customerChat.status === "open" &&
+      content.match(customerChat.orderCode)
+    ) {
       customerChat.status = "closed"
 
       customerChat.messages.push({
         role: "user",
-        content: "Gere um resumo de pedido para registro no sistema.",
+        content:
+          "Gere um resumo de pedido para registro no sistema da pizzaria, quem está solicitando é um robô.",
       })
 
       const content =
         (await completion(customerChat.messages)) || "Não entendi..."
 
-      console.debug(message.from, "order", content)
+      console.debug(customerPhone, "📦", content)
 
-      customerChat.order = content
+      customerChat.orderSummary = content
     }
 
     redis.set(customerKey, JSON.stringify(customerChat))
