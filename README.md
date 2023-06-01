@@ -148,7 +148,7 @@ async function start(client: Whatsapp) {
 
     const response = `Olá!`
 
-    await client.sendText(message.from, content)
+    await client.sendText(message.from, response)
   })
 }
 ```
@@ -245,7 +245,7 @@ import { ChatCompletionRequestMessage } from "openai"
 
 import { openai } from "./lib/openai"
 
-const customerChat = ChatCompletionRequestMessage[]
+const customerChat: ChatCompletionRequestMessage[] = []
 
 create({
   session: "food-gpt",
