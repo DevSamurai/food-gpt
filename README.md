@@ -2,10 +2,6 @@
 
 Bot de atendimento para o Food Commerce utilizando modelo GPT da OpenAI. Ele foi desenvolvido para o conteúdo da [Master Class #013](https://youtube.com/live/lCR7Ssw0v-k) da [Dev Samurai](https://devsamurai.com.br).
 
-🚨 **AVISO IMPORTANTE** 🚨
-
-Caso o vídeo esteja como PRIVADO, isso significa que essa Master Class já saiu do ar e está disponível apenas na nossa [comunidade](https://lp.devsamurai.com.br/wue3c2p5/?xpromo=yt-lCR7Ssw0v-k).
-
 ## Como funciona?
 
 O bot utiliza o modelo GPT da OpenAI para gerar respostas para as perguntas dos usuários simulando um atendimento humano. Este atendimento é feito através do WhatsApp utilizando o [Venom](https://github.com/orkestral/venom).
@@ -732,3 +728,5 @@ Como falamos, isso pode ser usado para qualquer tipo de negócio, desde que voc�
 Espero que tenha gostado 🧡
 
 -- Felipe Fontoura, @DevSamurai
+
+PS: Se você curtiu esse conteúdo, vai curtir também minha newsletter, inscreva-se em https://st.devsamurai.com.br/f7tvr6rx/index.html
